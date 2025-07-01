@@ -1,0 +1,56 @@
+<div class="flex w-full my-4 justify-center font-sans">
+  <div
+    *ngIf="metar"
+    class="w-4/6 bg-white border-t-4 shadow rounded-lg p-4"
+    [ngClass]="{
+      'border-green-500': metar.flightRules === 'vfr',
+      'border-yellow-500': metar.flightRules === 'mvfr',
+      'border-red-500':
+        metar.flightRules === 'ifr' || metar.flightRules === 'lifr'
+    }"
+  >
+    <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+      <div class="text-sm text-gray-500 mb-2">
+        <strong>Identification:</strong>
+        {{ metar.ident }}
+      </div>
+      <div class="text-sm text-gray-500 mb-2">
+        <strong>Date issued:</strong>
+        {{ metar.dateIssued | date : "MMM d, HH:mm" }}
+      </div>
+
+      <div>
+        <strong>Flight Rules:</strong>
+        {{ metar.flightRules?.toUpperCase() }}
+      </div>
+      <div>
+        <strong>Wind:</strong> {{ metar.wind?.direction }}° at
+        {{ metar.wind?.speedKts }} kts
+      </div>
+      <div>
+        <strong>Visibility:</strong>
+        {{ metar.visibility?.prevailingVisSm }} sm
+      </div>
+      <div>
+        <strong>Temperature:</strong>
+        {{ metar.tempC }} °C
+      </div>
+      <div>
+        <strong>Dewpoint:</strong>
+        {{ metar.dewpointC }} °C
+      </div>
+      <div>
+        <strong>Altimeter:</strong>
+        {{ metar.pressureHg }} in Hg
+      </div>
+      <div>
+        <strong>Humidity:</strong>
+        {{ metar.relativeHumidity }}%
+      </div>
+      <div>
+        <strong>Density altitude:</strong>
+        {{ metar.densityAltitudeFt }}'
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="flex flex-col items-center mx-auto">
+  <app-header
+    class="w-full"
+    [title]="'Full Report'"
+    [icao]="icao"
+    [loading]="loading"
+    [error]="error"
+    (icaoChange)="icao = $event"
+    (search)="fetchWeather()"
+  ></app-header>
+  <app-recent-lookups
+    class="flex w-full justify-center"
+    *ngIf="!icao && !loading && !error && taf.length === 0 !metar"
+    (lookupSelected)="fetchWeather($event)"
+  ></app-recent-lookups>
+  <h2
+    *ngIf="metar"
+    class="text-white w-4/6 text-start text-base font-bold uppercase px-4 py-2 rounded-md bg-gray-600"
+  >
+    METAR
+  </h2>
+  <app-metar-display class="w-full" [metar]="metar"></app-metar-display>
+  <h2
+    *ngIf="taf.length > 0"
+    class="text-white w-4/6 text-start text-base font-bold uppercase px-4 py-2 rounded-md bg-gray-600"
+  >
+    TAF
+  </h2>
+
+  <app-taf-display class="w-full" [taf]="taf"></app-taf-display>
+</div>

@@ -1,0 +1,62 @@
+<div class="flex flex-col w-full space-y-4 mt-4 items-center font-sans">
+  <div
+    *ngFor="let condition of taf"
+    class="bg-white border-l-4 shadow rounded-lg p-4 w-4/6"
+    [ngClass]="{
+      'border-green-500': condition.flightRules === 'vfr',
+      'border-yellow-500': condition.flightRules === 'mvfr',
+      'border-red-500':
+        condition.flightRules === 'ifr' || condition.flightRules === 'lifr'
+    }"
+  >
+    <div class="text-sm text-gray-500 mb-2">
+      <strong>Period:</strong>
+      {{ condition.period.dateStart | date : "MMM d, HH:mm" }} →
+      {{ condition.period.dateEnd | date : "HH:mm" }}
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+      <div>
+        <strong>Flight Rules:</strong>
+        {{ condition.flightRules?.toUpperCase() }}
+      </div>
+      <div>
+        <strong>Wind:</strong>
+        {{
+          condition.wind
+            ? condition.wind.direction +
+              "° at " +
+              condition.wind.speedKts +
+              " kts"
+            : "No wind"
+        }}
+      </div>
+      <div>
+        <strong>Visibility:</strong>
+        {{ condition.visibility?.prevailingVisSm }} sm
+      </div>
+
+      <div>
+        <strong>Weather:</strong>
+        {{
+          condition.weather?.length
+            ? condition.weather.join(", ")
+            : "No weather report available"
+        }}
+      </div>
+
+      <div *ngIf="condition.cloudLayers?.length">
+        <strong>Clouds:</strong>
+        <span *ngFor="let cloud of condition.cloudLayers; let last = last">
+          {{ cloud.coverage.toUpperCase()
+          }}{{ cloud.altitudeFt ? " at " + cloud.altitudeFt + " ft" : ""
+          }}{{ !last ? ", " : "" }}
+        </span>
+      </div>
+    </div>
+
+    <div class="text-xs text-gray-400 mt-2 italic">
+      Raw: {{ condition.text }}
+    </div>
+  </div>
+</div>

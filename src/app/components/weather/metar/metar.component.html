@@ -1,0 +1,17 @@
+<div class="flex flex-col items-center mx-auto w-full">
+  <app-header
+    class="w-full"
+    [title]="'METAR Report'"
+    [icao]="icao"
+    [loading]="loading"
+    (icaoChange)="icao = $event"
+    (search)="fetchMetar()"
+    [error]="error"
+  ></app-header>
+  <app-recent-lookups
+    class="flex w-full justify-center"
+    *ngIf="!icao && !loading && !error && !metar"
+    (lookupSelected)="fetchMetar($event)"
+  ></app-recent-lookups>
+  <app-metar-display class="w-full" [metar]="metar"></app-metar-display>
+</div>
