@@ -1,6 +1,6 @@
 <div class="flex h-screen">
 
-  <nav class="w-64 bg-gray-800 text-white p-6 flex flex-col justify-between">
+  <nav class="w-1/4 max-w-64 bg-gray-800 text-white p-6 flex flex-col justify-between">
     <div>
       <h1 class="text-2xl font-bold mb-6">Weather App</h1>
       <a routerLink="/weather/metar" routerLinkActive="bg-gray-700"
@@ -12,10 +12,10 @@
     </div>
 
     <div *ngIf="lookupHistory.length">
-      <h2 class="text-sm font-semibold mb-2">Recent Lookups</h2>
+      <h2 class="text-sm font-semibold text-gray-400 mb-2">Recent Lookups</h2>
       <div class="space-y-1">
         <a *ngFor="let code of lookupHistory" (click)="onLookupClick(code)"
-          class="cursor-pointer block px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded text-sm text-white">
+          class="cursor-pointer block px-3 py-1 hover:bg-gray-600 rounded text-xs text-white">
           {{ code }}
         </a>
       </div>

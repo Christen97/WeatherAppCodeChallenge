@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { MetarDisplayComponent } from './components/shared/metar-display/metar-display.component';
 import { TafDisplayComponent } from './components/shared/taf-display/taf-display.component';
 import { RecentLookupsComponent } from './components/shared/recent-lookups/recent-lookups.component';
+import { InputFieldComponent } from './components/shared/input-field/input-field.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { RecentLookupsComponent } from './components/shared/recent-lookups/recen
     MetarDisplayComponent,
     TafDisplayComponent,
     RecentLookupsComponent,
+    InputFieldComponent,
   ],
   imports: [
     BrowserModule,

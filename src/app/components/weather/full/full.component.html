@@ -1,19 +1,28 @@
 <div class="flex flex-col items-center mx-auto">
-  <app-header
+  <app-header class="w-full sticky top-0" [title]="'Full Report'"></app-header>
+  <h1 *ngIf="!metarIsVisible && metar && tafIsVisible" class="absolute top-2 text-white font-bold">METAR</h1>
+  <h1
+    *ngIf="!tafIsVisible && taf.length > 0"
+    class="absolute top-2 text-white font-bold"
+  >
+    TAF
+  </h1>
+
+  <app-input-field
     class="w-full"
-    [title]="'Full Report'"
     [icao]="icao"
     [loading]="loading"
     [error]="error"
     (icaoChange)="icao = $event"
     (search)="fetchWeather()"
-  ></app-header>
+  ></app-input-field>
   <app-recent-lookups
     class="flex w-full justify-center"
-    *ngIf="!icao && !loading && !error && taf.length === 0 !metar"
+    *ngIf="!icao && !loading && !error && taf.length === 0!; metar"
     (lookupSelected)="fetchWeather($event)"
   ></app-recent-lookups>
   <h2
+    #observeMetar
     *ngIf="metar"
     class="text-white w-4/6 text-start text-base font-bold uppercase px-4 py-2 rounded-md bg-gray-600"
   >
@@ -21,6 +30,7 @@
   </h2>
   <app-metar-display class="w-full" [metar]="metar"></app-metar-display>
   <h2
+    #observeTaf
     *ngIf="taf.length > 0"
     class="text-white w-4/6 text-start text-base font-bold uppercase px-4 py-2 rounded-md bg-gray-600"
   >

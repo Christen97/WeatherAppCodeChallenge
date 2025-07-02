@@ -1,30 +1,61 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LookupService } from 'src/app/services/lookup.service';
 import { WeatherService } from 'src/app/services/weather.service';
 
 @Component({
   selector: 'app-full',
-  templateUrl: './full.component.html'
+  templateUrl: './full.component.html',
 })
 export class FullComponent {
-  icao = '';
+  @ViewChild('observeMetar', { static: false }) observeMetar!: ElementRef;
+  private metarObserver: IntersectionObserver | null = null;
+  metarIsVisible: boolean = true;
+  @ViewChild('observeTaf', { static: false }) observeTaf!: ElementRef;
+  private tafObserver: IntersectionObserver | null = null;
+  tafIsVisible: boolean = true;
+  icao: string = '';
   metar: any = null;
   taf: any[] = [];
   loading = false;
   error: string | null = null;
 
-  constructor(private route: ActivatedRoute, private weatherService: WeatherService, private lookup: LookupService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private weatherService: WeatherService,
+    private lookup: LookupService
+  ) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       const code = params['icao'];
       if (code) {
         this.icao = code;
         this.fetchWeather(code);
       }
     });
-    console.log(this.taf)
+  }
+
+  ngAfterViewChecked() {
+    if (this.observeMetar && !this.metarObserver) {
+      this.metarObserver = new IntersectionObserver(
+        ([entry]) => {
+          this.metarIsVisible = entry.isIntersecting;
+        },
+        { root: null, threshold: 0.1 }
+      );
+      this.metarObserver.observe(this.observeMetar.nativeElement);
+    }
+
+    if (this.observeTaf && !this.tafObserver) {
+      this.tafObserver = new IntersectionObserver(
+        ([entry]) => {
+          this.tafIsVisible = entry.isIntersecting;
+        },
+        { root: null, threshold: 0.1 }
+      );
+      this.tafObserver.observe(this.observeTaf.nativeElement);
+    }
   }
 
   fetchWeather(code?: string) {
@@ -48,7 +79,7 @@ export class FullComponent {
       error: () => {
         this.error = 'Failed to fetch weather data.';
         this.loading = false;
-      }
+      },
     });
   }
 }

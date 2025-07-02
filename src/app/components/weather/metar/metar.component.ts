@@ -35,14 +35,12 @@ export class MetarComponent {
 
     this.weatherService.getWeather(searchIcao).subscribe({
       next: (response: any) => {
-        //console.log('Weather response:', response);
         const conditions = response.data.report?.conditions;
         if (conditions) {
           this.metar = conditions;
         } else {
           this.error = 'No METAR data available.';
         }
-        console.log(this.metar)
         this.icao = searchIcao;
 
         this.loading = false;

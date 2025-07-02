@@ -35,7 +35,6 @@ export class TafComponent {
 
   this.weatherService.getWeather(searchIcao).subscribe({
     next: (response: any) => {
-      //console.log('Weather response:', response);
       const forecast = response.data.report?.forecast;
       if (forecast?.conditions?.length) {
         this.taf = forecast.conditions;

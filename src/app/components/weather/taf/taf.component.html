@@ -1,14 +1,15 @@
 <div class="flex flex-col items-center mx-auto">
-  <app-header
+  <app-header class="w-full sticky top-0" [title]="'TAF Report'"></app-header>
+  <app-input-field
     class="w-full"
-    [title]="'TAF Report'"
     [icao]="icao"
     [loading]="loading"
     [error]="error"
     (icaoChange)="icao = $event"
     (search)="fetchTaf()"
-  ></app-header>
-  <app-recent-lookups class="flex w-full justify-center"
+  ></app-input-field>
+  <app-recent-lookups
+    class="flex w-full justify-center"
     *ngIf="!icao && !loading && !error && taf.length === 0"
     (lookupSelected)="fetchTaf($event)"
   ></app-recent-lookups>
