@@ -8,9 +8,8 @@ describe('MetarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MetarComponent ]
-    })
-    .compileComponents();
+      declarations: [MetarComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

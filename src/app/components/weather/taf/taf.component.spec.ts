@@ -24,7 +24,7 @@ describe('TafComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            queryParams: of({ icao: 'EKOD' }), // simulate query param
+            queryParams: of({ icao: 'EKOD' }),
           },
         },
       ],

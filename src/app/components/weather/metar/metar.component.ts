@@ -5,7 +5,7 @@ import { WeatherService } from 'src/app/services/weather.service';
 
 @Component({
   selector: 'app-metar',
-  templateUrl: './metar.component.html'
+  templateUrl: './metar.component.html',
 })
 export class MetarComponent {
   icao = '';
@@ -13,10 +13,14 @@ export class MetarComponent {
   loading = false;
   error: string | null = null;
 
-  constructor(private route: ActivatedRoute, private weatherService: WeatherService, private lookup: LookupService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private weatherService: WeatherService,
+    private lookup: LookupService
+  ) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       const code = params['icao'];
       if (code) {
         this.icao = code;
@@ -44,12 +48,12 @@ export class MetarComponent {
         this.icao = searchIcao;
 
         this.loading = false;
-        this.lookup.addLookup(searchIcao)
+        this.lookup.addLookup(searchIcao);
       },
       error: () => {
         this.error = 'Failed to fetch data. Please check the ICAO code.';
         this.loading = false;
-      }
+      },
     });
   }
 }

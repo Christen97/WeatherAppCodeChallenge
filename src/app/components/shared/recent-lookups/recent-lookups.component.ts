@@ -3,7 +3,7 @@ import { LookupService } from 'src/app/services/lookup.service';
 
 @Component({
   selector: 'app-recent-lookups',
-  templateUrl: './recent-lookups.component.html'
+  templateUrl: './recent-lookups.component.html',
 })
 export class RecentLookupsComponent {
   lookups$ = this.lookupService.history$;

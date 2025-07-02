@@ -1,5 +1,10 @@
-<div *ngIf="(lookups$ | async) as lookups" class="flex flex-col w-3/6 items-center border rounded">
-  <h3 class="w-full text-gray-700 font-semibold mb-2 bg-gray-200 p-2">Recent Lookups</h3>
+<div
+  *ngIf="lookups$ | async as lookups"
+  class="flex flex-col w-3/6 items-center border rounded"
+>
+  <h3 class="w-full text-gray-700 font-semibold mb-2 bg-gray-200 p-2">
+    Recent Lookups
+  </h3>
   <ul *ngIf="lookups.length > 0" class="space-y-2 w-full">
     <li
       *ngFor="let code of lookups"

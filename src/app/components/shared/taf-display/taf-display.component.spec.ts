@@ -8,9 +8,8 @@ describe('TafDisplayComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TafDisplayComponent ]
-    })
-    .compileComponents();
+      declarations: [TafDisplayComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
