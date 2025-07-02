@@ -5,7 +5,7 @@ import { LookupService } from 'src/app/services/lookup.service';
 
 @Component({
   selector: 'app-taf',
-  templateUrl: './taf.component.html'
+  templateUrl: './taf.component.html',
 })
 export class TafComponent {
   icao = '';
@@ -13,45 +13,48 @@ export class TafComponent {
   loading = false;
   error: string | null = null;
 
-  constructor(private route: ActivatedRoute, private weatherService: WeatherService, private lookup: LookupService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private weatherService: WeatherService,
+    private lookup: LookupService
+  ) {}
 
   ngOnInit() {
-  this.route.queryParams.subscribe(params => {
-    const code = params['icao'];
-    if (code) {
-      this.icao = code;
-      this.fetchTaf(code);
-    }
-  });
-}
+    this.route.queryParams.subscribe((params) => {
+      const code = params['icao'];
+      if (code) {
+        this.icao = code;
+        this.fetchTaf(code);
+      }
+    });
+  }
 
   fetchTaf(code?: string) {
-  const searchIcao = (code ?? this.icao).toUpperCase().trim();
-  if (!searchIcao) return;
+    const searchIcao = (code ?? this.icao).toUpperCase().trim();
+    if (!searchIcao) return;
 
-  this.loading = true;
-  this.error = null;
-  this.taf = [];
+    this.loading = true;
+    this.error = null;
+    this.taf = [];
 
-  this.weatherService.getWeather(searchIcao).subscribe({
-    next: (response: any) => {
-      const forecast = response.data.report?.forecast;
-      if (forecast?.conditions?.length) {
-        this.taf = forecast.conditions;
-      } else {
-        this.error = 'No TAF data available.';
-      }
+    this.weatherService.getWeather(searchIcao).subscribe({
+      next: (response: any) => {
+        const forecast = response.data.report?.forecast;
+        if (forecast?.conditions?.length) {
+          this.taf = forecast.conditions;
+        } else {
+          this.error = 'No TAF data available.';
+        }
 
-      this.icao = searchIcao;
-      console.log(this.taf)
-      this.loading = false;
-      this.lookup.addLookup(searchIcao)
-    },
-    error: () => {
-      this.error = 'Failed to fetch data. Please check the ICAO code.';
-      this.loading = false;
-    }
-  });
-}
-
+        this.icao = searchIcao;
+        console.log(this.taf);
+        this.loading = false;
+        this.lookup.addLookup(searchIcao);
+      },
+      error: () => {
+        this.error = 'Failed to fetch data. Please check the ICAO code.';
+        this.loading = false;
+      },
+    });
+  }
 }

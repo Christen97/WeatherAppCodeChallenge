@@ -65,3 +65,4 @@
 /home/christen/Code/dispatch-code-challenge-main(5)/dispatch-code-challenge-main/WeatherApi/obj/Debug/net8.0/WeatherApi.pdb
 /home/christen/Code/dispatch-code-challenge-main(5)/dispatch-code-challenge-main/WeatherApi/obj/Debug/net8.0/WeatherApi.genruntimeconfig.cache
 /home/christen/Code/dispatch-code-challenge-main(5)/dispatch-code-challenge-main/WeatherApi/obj/Debug/net8.0/ref/WeatherApi.dll
+/home/christen/Code/dispatch-code-challenge-main(5)/dispatch-code-challenge-main/code-challenge-app/WeatherApi/obj/Debug/net8.0/WeatherApi.sourcelink.json

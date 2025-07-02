@@ -1,6 +1,11 @@
 <div class="flex flex-col items-center mx-auto">
   <app-header class="w-full sticky top-0" [title]="'Full Report'"></app-header>
-  <h1 *ngIf="!metarIsVisible && metar && tafIsVisible" class="absolute top-2 text-white font-bold">METAR</h1>
+  <h1
+    *ngIf="!metarIsVisible && metar && tafIsVisible"
+    class="absolute top-2 text-white font-bold"
+  >
+    METAR
+  </h1>
   <h1
     *ngIf="!tafIsVisible && taf.length > 0"
     class="absolute top-2 text-white font-bold"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/EZPRpt2XWs=",
+  "dgSpecHash": "ho9XPEwZyuk=",
   "success": true,
-  "projectFilePath": "/home/christen/Code/dispatch-code-challenge-main(5)/dispatch-code-challenge-main/WeatherApi/WeatherApi.csproj",
+  "projectFilePath": "/home/christen/Code/dispatch-code-challenge-main(5)/dispatch-code-challenge-main/code-challenge-app/WeatherApi/WeatherApi.csproj",
   "expectedPackageFiles": [
     "/home/christen/.nuget/packages/microsoft.aspnetcore.openapi/8.0.17/microsoft.aspnetcore.openapi.8.0.17.nupkg.sha512",
     "/home/christen/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

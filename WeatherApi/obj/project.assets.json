@@ -487,11 +487,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/christen/Code/dispatch-code-challenge-main(5)/dispatch-code-challenge-main/WeatherApi/WeatherApi.csproj",
+      "projectUniqueName": "/home/christen/Code/dispatch-code-challenge-main(5)/dispatch-code-challenge-main/code-challenge-app/WeatherApi/WeatherApi.csproj",
       "projectName": "WeatherApi",
-      "projectPath": "/home/christen/Code/dispatch-code-challenge-main(5)/dispatch-code-challenge-main/WeatherApi/WeatherApi.csproj",
+      "projectPath": "/home/christen/Code/dispatch-code-challenge-main(5)/dispatch-code-challenge-main/code-challenge-app/WeatherApi/WeatherApi.csproj",
       "packagesPath": "/home/christen/.nuget/packages/",
-      "outputPath": "/home/christen/Code/dispatch-code-challenge-main(5)/dispatch-code-challenge-main/WeatherApi/obj/",
+      "outputPath": "/home/christen/Code/dispatch-code-challenge-main(5)/dispatch-code-challenge-main/code-challenge-app/WeatherApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/christen/.nuget/NuGet/NuGet.Config"
