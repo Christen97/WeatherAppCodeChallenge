@@ -62,6 +62,12 @@ export class FullComponent {
     const searchIcao = (code ?? this.icao).toUpperCase().trim();
     if (!searchIcao) return;
 
+    this.metarObserver?.disconnect();
+    this.metarObserver = null;
+
+    this.tafObserver?.disconnect();
+    this.tafObserver = null;
+
     this.loading = true;
     this.error = null;
     this.metar = null;
